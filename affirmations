@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quote</title>
+
+    <style>
+      .widget {
+        padding: 5px 5px;
+        color: #000000;
+        text-align: center;
+        max-width: 95%;
+        margin: auto;
+        font-variant-caps: petite-caps;
+        font-size: 2em;
+      }
+
+      div {
+        width: 95%;
+        min-height: 100px;
+
+        background: linear-gradient(to right, black 4px, transparent 4px) 0 0,
+          linear-gradient(to right, black 4px, transparent 4px) 0 100%,
+          linear-gradient(to left, black 4px, transparent 4px) 100% 0,
+          linear-gradient(to left, black 4px, transparent 4px) 100% 100%,
+          linear-gradient(to bottom, black 4px, transparent 4px) 0 0,
+          linear-gradient(to bottom, black 4px, transparent 4px) 100% 0,
+          linear-gradient(to top, black 4px, transparent 4px) 0 100%,
+          linear-gradient(to top, black 4px, transparent 4px) 100% 100%;
+
+        background-repeat: no-repeat;
+        background-size: 20px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="widget" id="widget"></div>
+
+    <script>
+      quotes = [
+        "I am worthy of love, respect, compassion, and appreciation.",
+        "I am deserving of happiness, success, abundance, and fulfillment.",
+        "I can (and will) go after the things I want in life.",
+        "I am worthy of a life that I am proud of.",
+        "I am capable of great things.",
+        "I can do anything I set my mind to and I will be the person I dream of being.",
+        "I love myself. I trust myself. I respect myself. I want what's best for myself.",
+        "I love my body, I love my mind, I love who I am.",
+        "I release old stories of unworthiness and embrace my inherent value.",
+        "I release any beliefs that keep me stuck or small.",
+        "I am learning to accept myself where I am at this moment.",
+        "I am doing the best that I can and will continue working toward change.",
+        "I am enough as I am and getting better every day.",
+        "I'm proud of the progress I've made on my journey.",
+        "I am on my way to becoming the best version of myself.",
+        "I am learning and growing each day, even when I can't see it.",
+        "I am confident in my ability to create a life I love.",
+        "I am at peace with my past and excited for my future.",
+        "I am worthy of setting and achieving meaningful goals.",
+        "I give myself the chance and opportunity to heal and grow.",
+        "Who I am becoming makes me proud.",
+        "I am proud of my accomplishments, no matter how small.",
+        "I promise to be kind to myself. I deserve kindness.",
+        "It is in my power to choose happiness, joy, and positivity.",
+        "It is in my power to choose to love myself.",
+        "I can be happy now. I can love and be loved now. I can be the best version of myself now.",
+        "There is so much potential in me to do great things and be great.",
+        "I have gifts within me waiting to be expressed.",
+        "Every choice is an opportunity to practice being who I want to be.",
+        "I know my body is working hard for me every day.",
+        "I give my body respect and rest, and I consciously care for it.",
+        "I am grateful for my body and the ways it helps me experience life.",
+        "I am worthy of taking care of my body and its needs.",
+        "I forgive myself for the way I treated my body in the past.",
+        "My body and I are teammates—we do our best when we take care of each other.",
+        "I am a valuable and irreplaceable part of other people's lives.",
+        "A lot of people respect and admire me.",
+        "I am lovable just as I am without performing or achieving.",
+        "I know that life is beautiful and there is joy everywhere I go.",
+        "I trust that everything is going to work out for me.",
+        "I trust the timing of my life.",
+        "What needs to happen will happen.",
+        "Good things are ahead for me.",
+        "I am on my own path, on my own time.",
+        "I am exactly where I need to be in the present moment.",
+        "It will get better.",
+        "I am not running out of time.",
+        "I wake up every day ready to pursue my dreams and passions.",
+        "I am an active participant in my life.",
+        "I am willing to be uncomfortable to get what I want.",
+        "I am willing to be uncomfortable for the things I care about.",
+        "I lean into things that scare me. I lean into discomfort.",
+        "This is hard, but I can do hard things.",
+        "I have the strength and skills to get through anything I need to.",
+        "I am excited to live the rest of my life like it belongs to me.",
+        "There is no one out there more worthy of my time and attention than me.",
+        "There is no one more involved in and affected by my wellbeing and happiness than me.",
+        "I don't need anyone's permission besides my own.",
+        "I make progress by being dedicated to my daily tasks.",
+        "My successes are built on a foundation of regular effort.",
+        "I am positive, patient, and persistent.",
+        "I deserve the version of myself that is confident and trying my best.",
+        "I find joy and positivity in every step of the journey, not just at the destination.",
+        "I am in love with the process.",
+        "I create and act with the intention of shifting my mood rather than perfecting the output.",
+        "I trust that what I am doing is making a difference.",
+        "I have to figure this all out before taking a step → I have to take a step in order to start figuring all this out.",
+        "I am safe to confront my fears and move forward with clarity and courage.",
+        "I can't avoid my way into a life I love.",
+        "It is okay to take today one step at a time.",
+        "It is okay to go at my own pace.",
+        "Prioritizing me is productive.",
+        "I am worth taking care of and being taken care of by my most loving and patient self.",
+        "It is okay to ask for what I want and need.",
+        "I can play and explore just because I want to.",
+        "I am allowed to explore and evolve.",
+        "Making mistakes is a natural part of life and I can learn from them.",
+        "Every day I am getting better.",
+        "I am doing the best that I can.",
+        "I am willing to try.",
+        "Practice is progress.",
+        "Each time I make the choice to do the practice even though my thoughts are yelling at me to do otherwise, I am overcoming my mental resistance.",
+        "Each time I choose to practice something instead of avoiding it, I am getting better.",
+        "I promise to do my best and forgive myself for all the rest.",
+        "I change best by feeling good, not by feeling bad.",
+        "Each choice I make is built on positivity, not self-doubt.",
+        "I decide the person that I want to be and prove it to myself with small wins.",
+        "There is no need to fear any problem you are working on. If you are working on it, then you are influencing the outcome.",
+        "I know that future me has ___covered, so I am going to let this go until it's time to take action.",
+        "I am allowed to have a short vacation from ___ .",
+        "If I keep thinking this way, I will only get sicker. Instead, I am going to imagine a future in which I've solved ___in detail. I'll allow that feeling of peace to wash over me.",
+        "Something in me will save me from utter ruin no matter what comes.",
+        "Is this thought arising from shame or fear? What is a thought I can have from self-compassion or hope instead?",
+        "Am I acting from fear or from love?",
+        "Will this choice enlarge or diminish me?",
+        "I am observing this feeling, but I am not this feeling.",
+        "I can notice this thought without letting it consume me.",
+      ];
+
+      const INTERVAL = 99999999999999999;
+
+      function displayQuote() {
+        document.getElementById("widget").innerHTML = quotes[0];
+        quotes.forEach((quote, i) => {
+          setTimeout(() => {
+            document.getElementById("widget").innerHTML = quote;
+          }, i * INTERVAL);
+        });
+      }
+
+      function displayWidget() {
+        displayQuote();
+        setTimeout(displayWidget, quotes.length * INTERVAL);
+      }
+      displayWidget();
+    </script>
+  </body>
+</html>
